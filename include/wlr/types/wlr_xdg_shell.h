@@ -75,7 +75,7 @@ struct wlr_xdg_toplevel {
 	struct wlr_xdg_surface *parent;
 	bool added;
 	struct wlr_xdg_toplevel_state next; // client protocol requests
-	struct wlr_xdg_toplevel_state pending; // user configure requests
+	struct wlr_xdg_toplevel_state pending; // our configure requests
 	struct wlr_xdg_toplevel_state current;
 };
 
