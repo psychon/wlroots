@@ -96,7 +96,7 @@ static void print_dmabuf_formats(struct wlr_egl *egl) {
 	for (int i = 0; i < num; i++) {
 		snprintf(&str_formats[i*5], (num - i) * 5 + 1, "%.4s ", (char*)&formats[i]);
 	}
-	wlr_log(L_INFO, "Supported dmabuf buffer formats: %s", str_formats);
+	wlr_log(L_DEBUG, "Supported dmabuf buffer formats: %s", str_formats);
 	free(formats);
 }
 
@@ -158,12 +158,12 @@ bool wlr_egl_init(struct wlr_egl *egl, EGLenum platform, void *remote_display,
 	egl->egl_exts_str = eglQueryString(egl->display, EGL_EXTENSIONS);
 	egl->gl_exts_str = (const char*) glGetString(GL_EXTENSIONS);
 
-	wlr_log(L_INFO, "Using EGL %d.%d", (int)major, (int)minor);
-	wlr_log(L_INFO, "Supported EGL extensions: %s", egl->egl_exts_str);
-	wlr_log(L_INFO, "EGL vendor: %s", eglQueryString(egl->display, EGL_VENDOR));
-	wlr_log(L_INFO, "Using %s", glGetString(GL_VERSION));
-	wlr_log(L_INFO, "GL vendor: %s", glGetString(GL_VENDOR));
-	wlr_log(L_INFO, "Supported OpenGL ES extensions: %s", egl->gl_exts_str);
+	wlr_log(L_DEBUG, "Using EGL %d.%d", (int)major, (int)minor);
+	wlr_log(L_DEBUG, "Supported EGL extensions: %s", egl->egl_exts_str);
+	wlr_log(L_DEBUG, "EGL vendor: %s", eglQueryString(egl->display, EGL_VENDOR));
+	wlr_log(L_DEBUG, "Using %s", glGetString(GL_VERSION));
+	wlr_log(L_DEBUG, "GL vendor: %s", glGetString(GL_VENDOR));
+	wlr_log(L_DEBUG, "Supported OpenGL ES extensions: %s", egl->gl_exts_str);
 
 	if (!check_egl_ext(egl->egl_exts_str, "EGL_WL_bind_wayland_display") ||
 			!check_egl_ext(egl->egl_exts_str, "EGL_KHR_image_base")) {
